@@ -24,17 +24,16 @@ Foreach ( $Uri in $URLList ) {
 	}
 
 	# Prefix with "Error" if not a 200.
-    if( $request.StatusCode -ne "200" ) { 
+    	if( $request.StatusCode -ne "200" ) { 
 		$Outputreport += "ERROR | " 
-    } 
+    	} 
 	
 	$Outputreport += "URL: $($uri) "
 	$Outputreport += "StatusCode: $($request.StatusCode) "
 	$Outputreport += "Time: $($time) "
-    $Outputreport += "Error: $($error) "
+    	$Outputreport += "Error: $($error) "
 	$Outputreport += "`r`n "
 }
 
 # Add message to the log.
 $Outputreport | out-file -append L:\logs\out.txt
-
