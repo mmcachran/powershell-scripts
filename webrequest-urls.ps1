@@ -36,4 +36,4 @@ Foreach ( $Uri in $URLList ) {
 }
 
 # Add message to the log.
-$Outputreport | out-file -append L:\logs\out.txt
+$OutputReport | out-file -append L:\logs\out.txt
