@@ -5,14 +5,14 @@ $URLList = @(
 )
   
 # Holds output results.
-$Outputreport = "" 
+$OutputReport = "" 
 
 # Loop through URLs and call each one.
 Foreach ( $Uri in $URLList ) {
 	$time = try{ 
 		$request = $null 
 		
-		## Request the URI, and measure how long the response took. 
+		# Request the URI, and measure how long the response took. 
 		$result1 = Measure-Command { $request = Invoke-WebRequest -Uri $uri -TimeoutSec 14800 } 
 		$result1.TotalMilliseconds 
 	} catch { 
@@ -25,14 +25,14 @@ Foreach ( $Uri in $URLList ) {
 
 	# Prefix with "Error" if not a 200.
     	if( $request.StatusCode -ne "200" ) { 
-		$Outputreport += "ERROR | " 
+		$OutputReport += "ERROR | " 
     	} 
 	
-	$Outputreport += "URL: $($uri) "
-	$Outputreport += "StatusCode: $($request.StatusCode) "
-	$Outputreport += "Time: $($time) "
-    	$Outputreport += "Error: $($error) "
-	$Outputreport += "`r`n "
+	$OutputReport += "URL: $($uri) "
+	$OutputReport += "StatusCode: $($request.StatusCode) "
+	$OutputReport += "Time: $($time) "
+    	$OutputReport += "Error: $($error) "
+	$OutputReport += "`r`n "
 }
 
 # Add message to the log.
